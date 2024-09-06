@@ -1,11 +1,3 @@
-1. Create virtual env
-```python -m venv path-to-project\venv```
-2. Install packages 
-``` pip install package-name``` 
+### Codepen Repository
 
-### To automatically download packages for a project 
-*Download requirements*
-```pip install pipreqs```
-
-*Put Requirements into requirements.txt*
-```pip freeze > requirements.txt```
+Just a repository to keep all my pens. In case I want to keep my codepen aesthetic and delete all pens 🫣
