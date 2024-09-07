@@ -1,0 +1,146 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes eyeball-rotation {
+  12.5% {
+    transform: translate(10px, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  37.5% {
+    transform: translate(0, -10px);
+  }
+  50% {
+    transform: translate(-10px, -10px);
+  }
+  62.5% {
+    transform: translate(-10px, 0);
+  }
+  75% {
+    transform: translate(0);
+  }
+  87.5% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes chameleon-main {
+  14.2857142857% {
+    color: rgb(49, 179, 117);
+  }
+  28.5714285714% {
+    color: rgb(255, 107, 181);
+  }
+  42.8571428571% {
+    color: rgb(105, 180, 255);
+  }
+  57.1428571429% {
+    color: rgb(150, 105, 255);
+  }
+  71.4285714286% {
+    color: rgb(180, 255, 105);
+  }
+  85.7142857143% {
+    color: rgb(255, 105, 137);
+  }
+  100% {
+    color: rgb(255, 255, 105);
+  }
+}
+@keyframes chameleon-shadow {
+  14.2857142857% {
+    color: #138654;
+  }
+  28.5714285714% {
+    color: #e13e94;
+  }
+  42.8571428571% {
+    color: #4b87de;
+  }
+  57.1428571429% {
+    color: #783cde;
+  }
+  71.4285714286% {
+    color: #96d248;
+  }
+  85.7142857143% {
+    color: #e13c68;
+  }
+  100% {
+    color: #e1d248;
+  }
+}
+@keyframes tongue {}
+#layer-1,
+#layer-3,
+#layer-5 {
+  color: #ff69b4;
+  animation-name: chameleon-main;
+}
+
+#layer-2,
+#layer-4 {
+  color: #e14887;
+  animation-name: chameleon-shadow;
+}
+
+#layer-1 {
+  animation-duration: 14s;
+  animation-delay: 500ms;
+  animation-timing-function: steps(1, jump-start);
+  animation-iteration-count: infinite;
+}
+
+#layer-2 {
+  animation-duration: 14s;
+  animation-delay: 600ms;
+  animation-timing-function: steps(1, jump-start);
+  animation-iteration-count: infinite;
+}
+
+#layer-3 {
+  animation-duration: 14s;
+  animation-delay: 700ms;
+  animation-timing-function: steps(1, jump-start);
+  animation-iteration-count: infinite;
+}
+
+#layer-4 {
+  animation-duration: 14s;
+  animation-delay: 800ms;
+  animation-timing-function: steps(1, jump-start);
+  animation-iteration-count: infinite;
+}
+
+#layer-5 {
+  animation-duration: 14s;
+  animation-delay: 1000ms;
+  animation-timing-function: steps(1, jump-start);
+  animation-iteration-count: infinite;
+}
+
+#newme-text {
+  color: #ff69b4;
+  animation: 14s steps(1, jump-start) infinite chameleon-main;
+}
+
+#eyeball-fg {
+  animation: 8s steps(1, jump-start) infinite alternate eyeball-rotation;
+}

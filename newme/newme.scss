@@ -1,0 +1,125 @@
+@use 'sass:list';
+@use 'sass:color';
+
+$light-pink: #ff69b4;
+$dark-pink: #e14887;
+$pixel-size: 10px;
+// 200, 300, 400, 500
+$layer-delays: (500ms, 600ms, 700ms, 800ms, 1000ms);
+$total-animation-duration: 2s;
+// green, pink, blue, purple, neon-green, light-red
+$colors: (
+    rgb(49, 179, 117),
+    rgb(255, 107, 181),
+    rgb(105, 180, 255),
+    rgb(150, 105, 255),
+    rgb(180, 255, 105),
+    rgb(255, 105, 137),
+    rgb(255, 255, 105)
+);
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    // background: black;
+}
+
+@keyframes eyeball-rotation {
+    12.5% {
+        transform: translate($pixel-size, 0);
+    }
+
+    25% {
+        transform: translate($pixel-size, -$pixel-size);
+    }
+
+    37.5% {
+        transform: translate(0, -$pixel-size);
+    }
+
+    50% {
+        transform: translate(-$pixel-size, -$pixel-size);
+    }
+
+    62.5% {
+        transform: translate(-$pixel-size, 0);
+    }
+
+    75% {
+        transform: translate(0);
+    }
+
+    87.5% {
+        transform: translate(0, $pixel-size);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes chameleon-main {
+    @for $i from 1 through length($colors) {
+        #{(100% / length($colors)) * ($i)} {
+            color: nth($colors, $i);
+        }
+    }
+}
+
+@keyframes chameleon-shadow {
+    @for $i from 1 through length($colors) {
+        #{(100% / length($colors)) * ($i)} {
+            color: color.adjust(
+                nth($colors, $i),
+                $red: -30,
+                $blue: -33,
+                $green: -45
+            );
+        }
+    }
+}
+
+@keyframes tongue {
+}
+
+#layer-1,
+#layer-3,
+#layer-5 {
+    color: $light-pink;
+    animation-name: chameleon-main;
+}
+
+#layer-2,
+#layer-4 {
+    color: $dark-pink;
+    animation-name: chameleon-shadow;
+}
+
+@for $i from 1 through length($layer-delays) {
+    #layer-#{$i} {
+        $delay: nth($layer-delays, $i);
+        $duration: (length($colors) * $total-animation-duration);
+
+        animation-duration: $duration;
+        animation-delay: $delay;
+        animation-timing-function: steps(1, jump-start);
+        animation-iteration-count: infinite;
+    }
+}
+
+#newme-text {
+    color: $light-pink;
+    animation: #{length($colors) * $total-animation-duration} steps(
+            1,
+            jump-start
+        ) infinite chameleon-main;
+}
+
+#eyeball-fg {
+    animation: 8s steps(1, jump-start) infinite alternate eyeball-rotation;
+}
